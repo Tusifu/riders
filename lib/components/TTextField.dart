@@ -8,7 +8,8 @@ class TTextField extends StatefulWidget {
   final TextEditingController controller;
   final Widget? prefixIcon;
   final bool isEmail;
-  final String? customErrorMessage; // Add custom error message
+  final String? customErrorMessage;
+  final int? maxLine;
 
   const TTextField({
     super.key,
@@ -17,7 +18,8 @@ class TTextField extends StatefulWidget {
     required this.controller,
     this.prefixIcon,
     this.isEmail = false,
-    this.customErrorMessage, // Initialize custom error message
+    this.customErrorMessage,
+    this.maxLine = 1,
   });
 
   @override
@@ -56,6 +58,7 @@ class _TTextFieldState extends State<TTextField> {
           child: Stack(
             children: [
               CupertinoTextField(
+                maxLines: widget.maxLine,
                 controller: widget.controller,
                 obscureText: widget.isPassword ? _isObscured : false,
                 padding:
@@ -166,6 +169,8 @@ class _TTextFieldState extends State<TTextField> {
     } else if (widget.isEmail) {
       final regex = RegExp(r'^[^@]+@[^@]+\.[^@]+$');
       return !regex.hasMatch(value);
+    } else if (widget.customErrorMessage != null) {
+      return true;
     }
     return false;
   }

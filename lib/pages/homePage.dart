@@ -18,20 +18,6 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
-      // appBar: AppBar(
-      //   backgroundColor: Colors.white,
-      //   elevation: 0,
-      //   leading: IconButton(
-      //     icon: const Icon(CupertinoIcons.bars, color: Colors.black),
-      //     onPressed: () {},
-      //   ),
-      //   actions: [
-      //     IconButton(
-      //       icon: const Icon(CupertinoIcons.bell, color: Colors.black),
-      //       onPressed: () {},
-      //     ),
-      //   ],
-      // ),
       drawer: const TDrawer(),
       body: Stack(
         children: [
@@ -185,10 +171,8 @@ class HomePage extends StatelessWidget {
                           ),
                           style: const TextStyle(fontSize: 16),
                           decoration: BoxDecoration(
-                            color: const Color.fromARGB(255, 217, 245,
-                                235), // Set background color to red
-                            borderRadius: BorderRadius.circular(
-                                8.0), // Add rounded corners (optional)
+                            color: const Color.fromARGB(255, 217, 245, 235),
+                            borderRadius: BorderRadius.circular(8.0),
                           ),
                         ),
                         smallSpacing,

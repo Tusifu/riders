@@ -40,6 +40,8 @@ dependencies:
   intl_phone_field: ^3.2.0
   flutter_map: ^4.0.0
   latlong2: ^0.8.1
+  provider: ^6.1.2
+  shared_preferences: ^2.3.2
 
 dev_dependencies:
   flutter_test:
@@ -74,6 +76,7 @@ flutter:
     - assets/images/bike.png
     - assets/images/cycle.png
     - assets/images/taxi.png
+    - assets/images/car1.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

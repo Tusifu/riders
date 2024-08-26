@@ -117,7 +117,7 @@ class _TransportOptionState extends State<TransportOption> {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10.0),
           side: isSelected
-              ? BorderSide(color: Colors.green, width: 0.5)
+              ? const BorderSide(color: Colors.green, width: 0.5)
               : const BorderSide(color: Colors.black, width: 0.5),
         ),
         color: isSelected

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:riders/providers/authProvider.dart';
 import 'package:riders/utilities/constants.dart';
 
 class TDrawer extends StatelessWidget {
@@ -87,12 +89,16 @@ class TDrawer extends StatelessWidget {
               onTap: () {},
             ),
             const Divider(),
-            ListTile(
-              dense: true,
-              leading: const Icon(Icons.logout),
-              title: const Text('Logout'),
-              onTap: () {},
-            ),
+            Consumer<AuthProvider>(builder: (context, authProvider, child) {
+              return ListTile(
+                dense: true,
+                leading: const Icon(Icons.logout),
+                title: const Text('Logout'),
+                onTap: () async {
+                  await authProvider.logout(context);
+                },
+              );
+            }),
           ],
         ),
       ),

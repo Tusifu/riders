@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:riders/components/TBackButton.dart';
 import 'package:riders/components/TButton.dart';
 import 'package:riders/components/TPickerField.dart';
@@ -7,6 +8,7 @@ import 'package:riders/components/TTextField.dart';
 import 'package:riders/components/TPhoneNumberField.dart';
 import 'package:riders/pages/authentication/phoneVerificationPage.dart';
 import 'package:riders/pages/authentication/signInPage.dart';
+import 'package:riders/providers/authProvider.dart';
 import 'package:riders/utilities/constants.dart';
 
 class SignUpPage extends StatefulWidget {
@@ -63,6 +65,7 @@ class _SignUpPageState extends State<SignUpPage> {
             TTextField(
               labelText: 'Email',
               controller: emailController,
+              isEmail: true,
             ),
             normalSpacing,
             TPhoneNumberField(
@@ -82,6 +85,8 @@ class _SignUpPageState extends State<SignUpPage> {
             ),
             normalSpacing,
             CheckboxListTile(
+              controlAffinity: ListTileControlAffinity.leading,
+              activeColor: primaryColor,
               title: const Text(
                   'By signing up, you agree to the Terms of service and Privacy policy.'),
               value: _agreeToTerms,
@@ -93,9 +98,20 @@ class _SignUpPageState extends State<SignUpPage> {
             ),
             normalSpacing,
             TButton(
+              isDisabled: !_agreeToTerms,
               label: 'Sign Up',
-              onPressed: () {
+              onPressed: () async {
                 // Implement sign-up logic here
+
+                final authProvider =
+                    Provider.of<AuthProvider>(context, listen: false);
+                await authProvider.saveUserData(
+                  nameController.text,
+                  emailController.text,
+                  phoneController.text,
+                  genderController.text,
+                );
+
                 Navigator.pushNamed(context, PhoneVerificationPage.routeName);
               },
             ),
