@@ -9,6 +9,7 @@ import 'package:riders/utilities/constants.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ComplaintPage extends StatefulWidget {
+  static const String routeName = '/complaintPage';
   const ComplaintPage({super.key});
 
   @override
@@ -32,9 +33,11 @@ class _ComplaintPageState extends State<ComplaintPage> {
     final prefs = await SharedPreferences.getInstance();
     final recentReviewsJson = prefs.getString('recentComplaints');
     if (recentReviewsJson != null) {
+      final List<dynamic> decodedList = jsonDecode(recentReviewsJson);
       setState(() {
-        _recentReviews =
-            List<Map<String, String>>.from(jsonDecode(recentReviewsJson));
+        _recentReviews = decodedList
+            .map((item) => Map<String, String>.from(item as Map))
+            .toList();
       });
     }
   }
@@ -94,6 +97,7 @@ class _ComplaintPageState extends State<ComplaintPage> {
                 TPickerField(
                   labelText: "Choose a reason",
                   options: const [
+                    "-- select --",
                     "Vehicle not clean",
                     "Vehicle arrived late",
                     "Vehicle has mechanical fault"
@@ -157,27 +161,27 @@ class _ComplaintPageState extends State<ComplaintPage> {
 
   void _showEditDialog(int index) {
     final review = _recentReviews[index];
+    final TextEditingController editReasonController =
+        TextEditingController(text: review['reason']);
+    final TextEditingController editComplaintController =
+        TextEditingController(text: review['complaint']);
+
     showDialog(
       context: context,
       builder: (context) {
         return AlertDialog(
+          backgroundColor: backgroundColor,
           title: const Text('Edit Review'),
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
               TextFormField(
-                initialValue: review['reason'],
+                controller: editReasonController,
                 decoration: const InputDecoration(labelText: 'Reason'),
-                onChanged: (value) {
-                  // Update the reason in the review
-                },
               ),
               TextFormField(
-                initialValue: review['complaint'],
+                controller: editComplaintController,
                 decoration: const InputDecoration(labelText: 'Complaint'),
-                onChanged: (value) {
-                  // Update the complaint in the review
-                },
               ),
             ],
           ),
@@ -186,16 +190,22 @@ class _ComplaintPageState extends State<ComplaintPage> {
               onPressed: () {
                 Navigator.pop(context);
               },
-              child: const Text('Cancel'),
+              child: const Text(
+                'Cancel',
+                style: TextStyle(color: errorColor),
+              ),
             ),
             TextButton(
               onPressed: () {
                 // Save the edited review
-                _editReview(
-                    index, _reasonController.text, _complaintController.text);
+                _editReview(index, editReasonController.text,
+                    editComplaintController.text);
                 Navigator.pop(context);
               },
-              child: const Text('Save'),
+              child: const Text(
+                'Save',
+                style: TextStyle(color: primaryColor),
+              ),
             ),
           ],
         );

@@ -5,8 +5,12 @@ import 'package:riders/pages/authentication/setPasswordPage.dart';
 import 'package:riders/pages/authentication/signInPage.dart';
 import 'package:riders/pages/authentication/signUpPage.dart';
 import 'package:riders/pages/availableCarsPage.dart';
+import 'package:riders/pages/carDetailsPage.dart';
+import 'package:riders/pages/complaintPage.dart';
 import 'package:riders/pages/homePage.dart';
 import 'package:riders/pages/onboadingPage.dart';
+import 'package:riders/pages/requestForRentPage.dart';
+import 'package:riders/pages/successPage.dart';
 import 'package:riders/pages/transportSelectionPage.dart';
 import 'package:riders/pages/welcomePage.dart';
 import 'package:riders/providers/authProvider.dart';
@@ -40,10 +44,14 @@ class MyApp extends StatelessWidget {
           HomePage.routeName: (context) => HomePage(),
           SetPasswordPage.routeName: (context) => const SetPasswordPage(),
           AvailableCarsPage.routeName: (context) => const AvailableCarsPage(),
+          Successpage.routeName: (context) => const Successpage(),
+          CarDetailsPage.routeName: (context) => CarDetailsPage(),
+          ComplaintPage.routeName: (context) => const ComplaintPage(),
+          RequestForRentPage.routeName: (context) => const RequestForRentPage(),
           TransportSelectionPage.routeName: (context) =>
               const TransportSelectionPage(),
         },
-        home: const AvailableCarsPage(),
+        home: const OnboardingPage(),
       ),
     );
   }

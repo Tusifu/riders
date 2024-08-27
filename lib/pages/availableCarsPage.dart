@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:riders/components/TBackButton.dart';
+import 'package:riders/pages/carDetailsPage.dart';
 import 'package:riders/utilities/constants.dart';
 
 class AvailableCarsPage extends StatelessWidget {
@@ -131,6 +132,7 @@ class AvailableCarCard extends StatelessWidget {
                   child: ElevatedButton(
                     onPressed: () {
                       // Handle "Ride Now" action
+                      Navigator.pushNamed(context, CarDetailsPage.routeName);
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: primaryColor,

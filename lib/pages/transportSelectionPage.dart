@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:riders/components/TBackButton.dart';
+import 'package:riders/pages/availableCarsPage.dart';
 import 'package:riders/utilities/constants.dart';
 
 class TransportSelectionPage extends StatelessWidget {
@@ -105,6 +106,7 @@ class _TransportOptionState extends State<TransportOption> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
+        Navigator.pushNamed(context, AvailableCarsPage.routeName);
         if (!_isAnyOptionSelected) {
           setState(() {
             isSelected = true;

@@ -42,6 +42,7 @@ dependencies:
   latlong2: ^0.8.1
   provider: ^6.1.2
   shared_preferences: ^2.3.2
+  carousel_slider: ^5.0.0
 
 dev_dependencies:
   flutter_test:
@@ -77,6 +78,12 @@ flutter:
     - assets/images/cycle.png
     - assets/images/taxi.png
     - assets/images/car1.png
+    - assets/images/car2.png
+    - assets/images/success.png
+    - assets/images/mastercard.png
+    - assets/images/paypal.png
+    - assets/images/s.png
+    - assets/images/visa.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

@@ -79,7 +79,7 @@ class _SignUpPageState extends State<SignUpPage> {
               onChanged: (value) {
                 print("Changed to $value");
               },
-              options: const ["Male", "Female"],
+              options: const ["-- select gender --", "Male", "Female"],
               suffixIcon: const Icon(CupertinoIcons.chevron_down),
               controller: genderController,
             ),

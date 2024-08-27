@@ -107,6 +107,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
               child: TextButton(
                 onPressed: () {
                   // Handle skip action
+                  Navigator.pushNamed(context, WelcomePage.routeName);
                 },
                 child: const Text(
                   "Skip",

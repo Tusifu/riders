@@ -147,13 +147,11 @@ class _TPickerFieldState extends State<TPickerField> {
                 Expanded(
                   child: TextButton(
                     onPressed: () {
-                      // Handle selection and close the modal
-                      setState(() {
-                        _selectedValue = widget.options[
-                            0]; // Assuming the first option is selected
+                      // Use the value selected in the picker
+                      if (_selectedValue != null) {
                         widget.controller.text = _selectedValue!;
                         widget.onChanged(_selectedValue);
-                      });
+                      }
                       Navigator.pop(context);
                     },
                     child: const Text(

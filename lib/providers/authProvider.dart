@@ -105,8 +105,8 @@ class AuthProvider extends ChangeNotifier {
   }
 
   Future<void> logout(BuildContext context) async {
-    final prefs = await _preferences;
-    await prefs.remove('userData');
+    // final prefs = await _preferences;
+    // await prefs.remove('userData');
     _userData = null;
     _isLoggedIn = false;
     notifyListeners();

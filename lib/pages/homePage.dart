@@ -130,21 +130,23 @@ class HomePage extends StatelessWidget {
                 // mainAxisSize: MainAxisSize.min,
                 children: [
                   SizedBox(
-                      width: 170,
-                      child: TButton(
-                          label: "Rental",
-                          onPressed: () {
-                            // open Tusifu pick address modal
+                    width: 170,
+                    child: TButton(
+                      label: "Rental",
+                      onPressed: () {
+                        // open Tusifu pick address modal
 
-                            showCupertinoModalPopup(
-                              context: context,
-                              builder: (BuildContext context) =>
-                                  const CupertinoPopupSurface(
-                                isSurfacePainted: true,
-                                child: SelectAddressPopup(),
-                              ),
-                            );
-                          })),
+                        showCupertinoModalPopup(
+                          context: context,
+                          builder: (BuildContext context) =>
+                              const CupertinoPopupSurface(
+                            isSurfacePainted: true,
+                            child: SelectAddressPopup(),
+                          ),
+                        );
+                      },
+                    ),
+                  ),
                   smallSpacing,
                   Container(
                     padding: const EdgeInsets.symmetric(
@@ -180,7 +182,16 @@ class HomePage extends StatelessWidget {
                           children: [
                             Expanded(
                               child: ElevatedButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  showCupertinoModalPopup(
+                                    context: context,
+                                    builder: (BuildContext context) =>
+                                        const CupertinoPopupSurface(
+                                      isSurfacePainted: true,
+                                      child: SelectAddressPopup(),
+                                    ),
+                                  );
+                                },
                                 style: ElevatedButton.styleFrom(
                                   backgroundColor: primaryColor,
                                   shape: RoundedRectangleBorder(
@@ -197,7 +208,16 @@ class HomePage extends StatelessWidget {
                             ),
                             Expanded(
                               child: ElevatedButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  showCupertinoModalPopup(
+                                    context: context,
+                                    builder: (BuildContext context) =>
+                                        const CupertinoPopupSurface(
+                                      isSurfacePainted: true,
+                                      child: SelectAddressPopup(),
+                                    ),
+                                  );
+                                },
                                 style: ElevatedButton.styleFrom(
                                   backgroundColor:
                                       const Color.fromARGB(255, 217, 245, 235),
@@ -383,46 +403,23 @@ class _SelectAddressPopupState extends State<SelectAddressPopup> {
                       );
                     },
                   ),
-                  ListTile(
-                    leading: const Icon(CupertinoIcons.location_solid),
-                    title: const Text('Shopping center'),
-                    subtitle: const Text(
-                      'Gasabo, Remera, Kagasa, Misibya',
-                      style: TextStyle(color: Colors.grey),
-                    ),
-                    trailing: const Text('7.9km'),
-                    onTap: () {
-                      Navigator.of(context).pop();
-                      showCupertinoModalPopup(
-                        context: context,
-                        builder: (BuildContext context) =>
-                            const CupertinoPopupSurface(
-                          isSurfacePainted: true,
-                          child: ConfirmSelectAddressPopup(),
-                        ),
-                      );
-                    },
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: TButton(
+                        label: "Choose Location",
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                          showCupertinoModalPopup(
+                            context: context,
+                            builder: (BuildContext context) =>
+                                const CupertinoPopupSurface(
+                              isSurfacePainted: true,
+                              child: ConfirmSelectAddressPopup(),
+                            ),
+                          );
+                        }),
                   ),
-                  ListTile(
-                    leading: const Icon(CupertinoIcons.location_solid),
-                    title: const Text('Shopping mall'),
-                    subtitle: const Text(
-                      'Nyarugenge, Muhima, Church',
-                      style: TextStyle(color: Colors.grey),
-                    ),
-                    trailing: const Text('8.0km'),
-                    onTap: () {
-                      Navigator.of(context).pop();
-                      showCupertinoModalPopup(
-                        context: context,
-                        builder: (BuildContext context) =>
-                            const CupertinoPopupSurface(
-                          isSurfacePainted: true,
-                          child: ConfirmSelectAddressPopup(),
-                        ),
-                      );
-                    },
-                  ),
+                  bigSpacing,
                 ],
               ),
             ),
