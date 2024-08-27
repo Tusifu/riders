@@ -239,7 +239,7 @@ class ReviewItem extends StatelessWidget {
                 Text(reason),
                 Text(
                   text,
-                  style: TextStyle(color: Colors.grey),
+                  style: const TextStyle(color: Colors.grey),
                 ),
               ],
             ),

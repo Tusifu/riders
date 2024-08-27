@@ -4,7 +4,7 @@ import 'package:riders/pages/authentication/phoneVerificationPage.dart';
 import 'package:riders/pages/authentication/setPasswordPage.dart';
 import 'package:riders/pages/authentication/signInPage.dart';
 import 'package:riders/pages/authentication/signUpPage.dart';
-import 'package:riders/pages/complaintPage.dart';
+import 'package:riders/pages/availableCarsPage.dart';
 import 'package:riders/pages/homePage.dart';
 import 'package:riders/pages/onboadingPage.dart';
 import 'package:riders/pages/transportSelectionPage.dart';
@@ -39,10 +39,11 @@ class MyApp extends StatelessWidget {
           SignInPage.routeName: (context) => SignInPage(),
           HomePage.routeName: (context) => HomePage(),
           SetPasswordPage.routeName: (context) => const SetPasswordPage(),
+          AvailableCarsPage.routeName: (context) => const AvailableCarsPage(),
           TransportSelectionPage.routeName: (context) =>
               const TransportSelectionPage(),
         },
-        home: const ComplaintPage(),
+        home: const AvailableCarsPage(),
       ),
     );
   }
